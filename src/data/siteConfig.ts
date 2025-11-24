@@ -8,7 +8,7 @@ export const siteConfig = {
   links: {
     linkedin: 'https://www.linkedin.com/in/binoy-dcruz-trusted-advisor/',
     email: 'contact@binoydcruz.com',
-    phone: '+91-XXXXXXXXXX',
+    phone: '+91 95351 95903',
   },
   author: {
     name: 'Binoy Dcruz',
