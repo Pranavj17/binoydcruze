@@ -7,7 +7,7 @@ export const siteConfig = {
   ogImage: '/og-image.jpg',
   links: {
     linkedin: 'https://www.linkedin.com/in/binoy-dcruz-trusted-advisor/',
-    email: 'contact@binoydcruz.com',
+    email: 'binoy.dcruz@gmail.com',
     phone: '+91 95351 95903',
   },
   author: {
