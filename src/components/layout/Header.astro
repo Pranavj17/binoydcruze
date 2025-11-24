@@ -1,0 +1,101 @@
+---
+import { siteConfig } from '@/data/siteConfig';
+import { mainNavigation } from '@/data/navigation';
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-pearl shadow-sm transition-all">
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="text-2xl font-heading font-semibold text-navy group-hover:text-blue transition-colors">
+          {siteConfig.name}
+        </div>
+        <div class="hidden sm:block text-xs text-slate border-l border-silver pl-3">
+          Trusted Advisor
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-8">
+        {mainNavigation.map((item) => (
+          <a
+            href={item.href}
+            class="text-charcoal hover:text-blue font-medium transition-colors relative group"
+          >
+            {item.label}
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all group-hover:w-full"></span>
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA Button -->
+      <div class="hidden md:block">
+        <a
+          href="/#contact"
+          class="btn btn-gold"
+        >
+          Get Started
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2 text-navy hover:text-blue transition-colors"
+        aria-label="Toggle mobile menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden hidden bg-white border-t border-pearl shadow-lg"
+  >
+    <div class="container mx-auto px-4 py-6 space-y-4">
+      {mainNavigation.map((item) => (
+        <a
+          href={item.href}
+          class="block text-charcoal hover:text-blue font-medium transition-colors py-2"
+        >
+          {item.label}
+        </a>
+      ))}
+      <a
+        href="/#contact"
+        class="btn btn-gold w-full justify-center mt-4"
+      >
+        Get Started
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  mobileMenuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!mobileMenuBtn?.contains(e.target as Node) && !mobileMenu?.contains(e.target as Node)) {
+      mobileMenu?.classList.add('hidden');
+    }
+  });
+
+  // Close mobile menu on navigation
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+</script>

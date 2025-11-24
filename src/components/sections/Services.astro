@@ -1,0 +1,79 @@
+---
+import { services } from '@/data/services';
+---
+
+<section id="services" class="section-padding bg-pearl">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-4xl md:text-5xl font-heading font-bold text-navy mb-4">
+        Comprehensive Services
+      </h2>
+      <div class="w-24 h-1 bg-gradient-gold mx-auto mb-6"></div>
+      <p class="text-xl text-slate">
+        Expert guidance for both financial prosperity and personal growth
+      </p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {services.map((service) => (
+        <div class="card card-hover p-8 group">
+          <!-- Icon -->
+          <div class="w-16 h-16 bg-pearl rounded-lg flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors">
+            {service.category === 'financial' ? (
+              <svg class="w-8 h-8 text-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            ) : (
+              <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+              </svg>
+            )}
+          </div>
+
+          <!-- Content -->
+          <h3 class="text-2xl font-heading font-semibold text-navy mb-2">
+            {service.title}
+          </h3>
+          <p class="text-sm text-gold mb-4 font-medium">
+            {service.tagline}
+          </p>
+          <p class="text-slate mb-6">
+            {service.description}
+          </p>
+
+          <!-- Features -->
+          <ul class="space-y-2 mb-6">
+            {service.features.slice(0, 3).map((feature) => (
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-gold flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-sm text-charcoal">{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <!-- Learn More Link -->
+          <a
+            href={service.href}
+            class="text-blue hover:text-gold font-medium inline-flex items-center gap-2 transition-colors group"
+          >
+            Learn More
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-16">
+      <a href="/#contact" class="btn btn-gold">
+        Schedule a Consultation
+      </a>
+    </div>
+  </div>
+</section>
