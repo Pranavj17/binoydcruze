@@ -7,12 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://binoydcruz.com', // Update with actual domain
-  output: 'hybrid', // SSG with selective SSR
-  adapter: cloudflare({
-    platformProxy: {
-      enabled: true,
-    },
-  }),
+  output: 'static',
   integrations: [
     tailwind({
       applyBaseStyles: false,
