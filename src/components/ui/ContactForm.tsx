@@ -112,7 +112,7 @@ export default function ContactForm() {
             {...register('name', { required: 'Name is required' })}
             className={`w-full px-4 py-3 rounded-lg border ${
               errors.name ? 'border-red-500' : 'border-silver'
-            } focus:ring-2 focus:ring-gold focus:border-transparent transition-colors`}
+            } focus:ring-2 focus:ring-gold focus:border-transparent transition-colors text-charcoal`}
             placeholder="Your name"
           />
           {errors.name && (
@@ -136,7 +136,7 @@ export default function ContactForm() {
             })}
             className={`w-full px-4 py-3 rounded-lg border ${
               errors.email ? 'border-red-500' : 'border-silver'
-            } focus:ring-2 focus:ring-gold focus:border-transparent transition-colors`}
+            } focus:ring-2 focus:ring-gold focus:border-transparent transition-colors text-charcoal`}
             placeholder="you@example.com"
           />
           {errors.email && (
@@ -154,7 +154,7 @@ export default function ContactForm() {
             id="phone"
             type="tel"
             {...register('phone')}
-            className="w-full px-4 py-3 rounded-lg border border-silver focus:ring-2 focus:ring-gold focus:border-transparent transition-colors"
+            className="w-full px-4 py-3 rounded-lg border border-silver focus:ring-2 focus:ring-gold focus:border-transparent transition-colors text-charcoal"
             placeholder="+91 XXXXX XXXXX"
           />
         </div>
@@ -168,7 +168,7 @@ export default function ContactForm() {
             {...register('service', { required: 'Please select a service' })}
             className={`w-full px-4 py-3 rounded-lg border ${
               errors.service ? 'border-red-500' : 'border-silver'
-            } focus:ring-2 focus:ring-gold focus:border-transparent transition-colors`}
+            } focus:ring-2 focus:ring-gold focus:border-transparent transition-colors text-charcoal`}
           >
             <option value="">Select a service</option>
             <option value="wealth-management">Wealth Management</option>
@@ -197,7 +197,7 @@ export default function ContactForm() {
           rows={5}
           className={`w-full px-4 py-3 rounded-lg border ${
             errors.message ? 'border-red-500' : 'border-silver'
-          } focus:ring-2 focus:ring-gold focus:border-transparent transition-colors resize-none`}
+          } focus:ring-2 focus:ring-gold focus:border-transparent transition-colors resize-none text-charcoal`}
           placeholder="Tell me about your goals and how I can help..."
         />
         {errors.message && (
