@@ -38,13 +38,25 @@ export default function ContactForm() {
       formData.append('from_name', data.name);
       formData.append('subject', `New Contact Form Submission from ${data.name}`);
 
+      console.log('Submitting to Web3Forms...', Object.fromEntries(formData));
+
       // Submit to Web3Forms API
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+        },
         body: formData,
       });
 
+      console.log('Response status:', response.status);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const result = await response.json();
+      console.log('Response data:', result);
 
       if (result.success) {
         setStatus('success');
@@ -53,11 +65,12 @@ export default function ContactForm() {
         throw new Error(result.message || 'Submission failed');
       }
     } catch (error) {
+      console.error('Form submission error:', error);
       setStatus('error');
       setErrorMessage(
         error instanceof Error
           ? error.message
-          : 'Something went wrong. Please try again or email binoy.dcruz@gmail.com directly.'
+          : 'Something went wrong. Please try again or email jpranav97@gmail.com directly.'
       );
     }
   };
