@@ -1,0 +1,8 @@
+# Cloudflare Pages Configuration
+# This tells Wrangler to deploy static assets, not a Worker
+
+name = "binoydcruz"
+compatibility_date = "2025-11-25"
+
+[site]
+bucket = "./dist"
