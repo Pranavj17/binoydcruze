@@ -27,17 +27,38 @@ export default function ContactForm() {
     setErrorMessage('');
 
     try {
-      // For now, just simulate success
-      // In production, this would call the Cloudflare Worker
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Prepare form data for Web3Forms
+      const formData = new FormData();
+      formData.append('access_key', 'f094912b-668a-4847-993a-71e24251bbe1');
+      formData.append('name', data.name);
+      formData.append('email', data.email);
+      formData.append('phone', data.phone || 'Not provided');
+      formData.append('service', data.service);
+      formData.append('message', data.message);
+      formData.append('from_name', data.name);
+      formData.append('subject', `New Contact Form Submission from ${data.name}`);
 
-      console.log('Form data:', data);
+      // Submit to Web3Forms API
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
 
-      setStatus('success');
-      reset();
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus('success');
+        reset();
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
     } catch (error) {
       setStatus('error');
-      setErrorMessage('Something went wrong. Please try again or email directly.');
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : 'Something went wrong. Please try again or email binoy.dcruz@gmail.com directly.'
+      );
     }
   };
 
@@ -63,6 +84,14 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      {/* Honeypot field for spam protection - hidden from users */}
+      <input
+        type="checkbox"
+        name="botcheck"
+        className="hidden"
+        style={{ display: 'none' }}
+      />
+
       {status === 'error' && (
         <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
           <svg className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
