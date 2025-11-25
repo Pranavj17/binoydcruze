@@ -16,9 +16,9 @@ import { services } from '@/data/services';
     </div>
 
     <!-- Services Grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
       {services.map((service) => (
-        <div class="card card-hover p-8 group">
+        <div class="card card-hover p-6 md:p-8 group">
           <!-- Icon -->
           <div class="w-16 h-16 bg-pearl rounded-lg flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors">
             {service.category === 'financial' ? (
